@@ -5,6 +5,16 @@ public class LinkedList<T> {
     private Node<T> end;
     private long size;
 
+    public void addFirst(T data){
+        Node<T> newNode = new Node<>(data);
+        if (this.size == 0){
+            this.end = newNode;
+        }
+        newNode.setNext(this.head);
+        this.head = newNode;
+        size++;
+    }
+
     public void addLast(T data){
         Node<T> newLastNode = new Node<>(data);
         if(this.size == 0){
@@ -17,6 +27,23 @@ public class LinkedList<T> {
             this.end.setNext(newLastNode);
             this.end = newLastNode;
         }
+        size++;
+    }
+
+    public void insertAfter(T data, long index){
+        if(size < index + 1){
+            throw new IllegalArgumentException("Index out of bounds!");
+        }
+        int i = 0;
+        Node nodeBefore = head;
+        while (i < index) {
+            nodeBefore = nodeBefore.getNext();
+            i++;
+        }
+
+        Node newNode = new Node(data);
+        newNode.setNext(nodeBefore.getNext());
+        nodeBefore.setNext(newNode);
         size++;
     }
 
@@ -45,22 +72,5 @@ public class LinkedList<T> {
         }
 
         return node.getData();
-    }
-
-    public void insertAfter(T data, long index){
-        if(size < index + 1){
-            throw new IllegalArgumentException("Index out of bounds!");
-        }
-        int i = 0;
-        Node nodeBefore = head;
-        while (i < index) {
-            nodeBefore = nodeBefore.getNext();
-            i++;
-        }
-
-        Node newNode = new Node(data);
-        newNode.setNext(nodeBefore.getNext());
-        nodeBefore.setNext(newNode);
-        size++;
     }
 }

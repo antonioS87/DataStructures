@@ -42,7 +42,25 @@ class LinkedListTest {
 
         exception = assertThrows(IllegalArgumentException.class, () -> linkedList.insertAfter(5, 6));
         assertEquals("Index out of bounds!", exception.getMessage());
+    }
 
+    @Test
+    public void testAddFirst(){
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.addFirst(0);
+        assertEquals(1, linkedList.getSize());
+        assertEquals(0, linkedList.getLast());
+        assertEquals(0, linkedList.getFirst());
+
+        linkedList.addFirst(1);
+        assertEquals(2, linkedList.getSize());
+        assertEquals(0, linkedList.getLast());
+        assertEquals(1, linkedList.getFirst());
+
+        linkedList.addFirst(2);
+        assertEquals(2, linkedList.get(0));
+        assertEquals(1, linkedList.get(1));
+        assertEquals(0, linkedList.get(2));
     }
 
 }
