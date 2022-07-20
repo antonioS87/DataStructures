@@ -47,20 +47,20 @@ public class LinkedList<T> {
         return node.getData();
     }
 
-//    public void insertAfter(int data, int nodePosition){
-//        if(size < nodePosition + 1){
-//            throw new IllegalArgumentException("Node position greater than list size!");
-//        }
-//        int i = 0;
-//        Node nodeBefore = head;
-//        while (i < nodePosition) {
-//            nodeBefore = nodeBefore.next;
-//            i++;
-//        }
-//
-//        Node newNode = new Node(data);
-//        newNode.next = nodeBefore.next;
-//        nodeBefore.next = newNode;
-//        size++;
-//    }
+    public void insertAfter(T data, long index){
+        if(size < index + 1){
+            throw new IllegalArgumentException("Index out of bounds!");
+        }
+        int i = 0;
+        Node nodeBefore = head;
+        while (i < index) {
+            nodeBefore = nodeBefore.getNext();
+            i++;
+        }
+
+        Node newNode = new Node(data);
+        newNode.setNext(nodeBefore.getNext());
+        nodeBefore.setNext(newNode);
+        size++;
+    }
 }
