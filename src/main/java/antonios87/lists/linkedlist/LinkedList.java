@@ -51,11 +51,57 @@ public class LinkedList<T> {
         if(size == 1){
             this.head = null;
             this.end = null;
-            size = size-1;
+            size--;
         } else if (size > 1){
             this.head = this.head.getNext();
-            size = size-1;
+            size--;
         }
+    }
+
+    public void removeLast(){
+        if(size == 1){
+            this.head = null;
+            this.end = null;
+            size--;
+        } else if (size > 1){
+            Node node = head;
+            while(node.getNext().getNext() != null){
+                node = node.getNext();
+            }
+            node.setNext(null);
+            this.end = node;
+            size--;
+        }
+    }
+
+    public void removeAtIndex(long index){
+        if(size < index -1 || size == 0){
+            throw new IllegalArgumentException("Index out of bounds!");
+        }
+
+        if(size == 1){
+            this.head = null;
+            this.end = null;
+        } else if(size == 2){
+            if(index == 0){
+                this.head = head.getNext();
+            }
+            this.end = this.head;
+        } else {
+            Node node = head;
+            long i = 0;
+            while(i < index - 1){
+                node = node.getNext();
+            }
+            node.setNext(node.getNext().getNext());
+        }
+        size--;
+    }
+
+    public void clear(){
+        this.head = null;
+        this.end = null;
+        this.size = 0;
     }
 
     public long getSize(){
