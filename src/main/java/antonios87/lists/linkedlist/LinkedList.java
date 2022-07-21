@@ -47,15 +47,33 @@ public class LinkedList<T> {
         size++;
     }
 
+    public void removeFirst(){
+        if(size == 1){
+            this.head = null;
+            this.end = null;
+            size = size-1;
+        } else if (size > 1){
+            this.head = this.head.getNext();
+            size = size-1;
+        }
+    }
+
     public long getSize(){
         return this.size;
     }
 
     public T getLast(){
+        if(end == null) {
+            return null;
+        }
+
         return this.end.getData();
     }
 
     public T getFirst(){
+        if(head == null){
+            return null;
+        }
         return this.head.getData();
     }
 

@@ -63,4 +63,28 @@ class LinkedListTest {
         assertEquals(0, linkedList.get(2));
     }
 
+    @Test
+    public void testRemoveFirst(){
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.addFirst(0);
+        linkedList.removeFirst();
+        assertEquals(0, linkedList.getSize());
+        assertEquals(null, linkedList.getLast());
+        assertEquals(null, linkedList.getFirst());
+
+        linkedList.addFirst(0);
+        linkedList.addLast(1);
+        linkedList.removeFirst();
+        assertEquals(1, linkedList.getSize());
+        assertEquals(1, linkedList.getFirst());
+        assertEquals(1, linkedList.getLast());
+
+        linkedList.addFirst(0);
+        linkedList.addLast(2);
+        linkedList.removeFirst();
+        assertEquals(2, linkedList.getSize());
+        assertEquals(1, linkedList.getFirst());
+        assertEquals(2, linkedList.getLast());
+    }
+
 }
