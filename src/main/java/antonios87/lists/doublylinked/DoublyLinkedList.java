@@ -69,4 +69,37 @@ public class DoublyLinkedList<T> {
 
         return null;
     }
+
+    public void insertAfter(T data, long index){
+        if(size < index + 1){
+            throw new IllegalArgumentException("Index out of bounds!");
+        }
+        long i = 0;
+        Node nodeBefore = head;
+        while (i < index) {
+            nodeBefore = nodeBefore.next();
+            i++;
+        }
+
+        Node newNode = new Node(data);
+        newNode.setNext(nodeBefore.next());
+        newNode.setPrevious(nodeBefore);
+        nodeBefore.setNext(newNode);
+        size++;
+    }
+
+    public T get(long index){
+        if(size < index){
+            throw new IllegalArgumentException("Index greater than list size!");
+        }
+
+        Node<T> node = this.head;
+        long i = 0;
+        while(i < index){
+            node = node.next();
+            i++;
+        }
+
+        return node.data();
+    }
 }

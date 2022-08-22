@@ -67,4 +67,27 @@ class DoublyLinkedListTest {
         assertEquals(3, list.size());
         assertEquals(2, list.getLast());
     }
+
+    @Test
+    void insertAfterTest(){
+        DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
+        list.addLast(0);
+        assertEquals(1, list.size());
+        assertEquals(0, list.getLast());
+        list.addLast(1);
+        assertEquals(2, list.size());
+        assertEquals(1, list.getLast());
+        list.insertAfter(2, 0);
+        assertEquals(3, list.size());
+        assertEquals(0, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(1, list.get(2));
+
+        list.insertAfter(3, 1);
+        assertEquals(4, list.size());
+        assertEquals(0, list.get(0));
+        assertEquals(2, list.get(1));
+        assertEquals(3, list.get(2));
+        assertEquals(1, list.get(3));
+    }
 }
