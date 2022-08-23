@@ -2,6 +2,8 @@ package antonios87.lists.doublylinked;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoublyLinkedListTest {
@@ -101,5 +103,8 @@ class DoublyLinkedListTest {
         assertEquals(2, list.size());
         assertEquals(1, list.get(0));
         assertEquals(0, list.get(1));
+
     }
+
+
 }
