@@ -25,18 +25,41 @@ public class HashMap<K,V> implements Map<K, V> {
     }
 
     @Override
-    public boolean containsKey() {
+    public boolean containsKey(K key) {
+        return this.get(key) != null;
+    }
+
+    @Override
+    public boolean containsValue(V value) {
+        for(int i = 0; i < capacity; i++){
+
+            Node<K, V> node = nodes[i];
+            while(node != null && !node.getValue().equals(value)){
+                node = node.getNext();
+            }
+
+            if(node != null){
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public boolean containsValue() {
-        return false;
-    }
+    public V get(K key) {
+        int position = key.hashCode() % capacity;
 
-    @Override
-    public V get() {
-        return null;
+        Node<K, V> node = nodes[position];
+        while(node != null && node.getKey() != key){
+            node = node.getNext();
+        }
+
+        if(node != null){
+            return node.getValue();
+        } else {
+            return null;
+        }
+
     }
 
     @Override

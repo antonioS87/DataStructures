@@ -85,10 +85,46 @@ class HashMapTest {
         map.put(17, "d");
         assertEquals(4, map.size());
         System.out.println(map.toString());
+    }
 
+    @Test
+    public void testPutGet(){
+        HashMap<Integer, String> map = new HashMap<>(5);
+        map.put(2, "a");
+        assertEquals(map.get(2), "a");
+        map.put(7, "b");
+        assertEquals(map.get(7), "b");
+        map.put(123, "c");
+        assertEquals(map.get(123), "c");
+    }
 
+    @Test
+    public void testContainsKey(){
+        HashMap<Integer, String> map = new HashMap<>(5);
+        map.put(2, "a");
+        assertTrue(map.containsKey(2));
+        assertFalse(map.containsKey(3));
+        map.put(3, "a");
+        assertTrue(map.containsKey(3));
+        map.remove(2);
+        assertFalse(map.containsKey(2));
+        assertTrue(map.containsKey(3));
+        map.remove(3);
+        assertFalse(map.containsKey(3));
+    }
 
-
-
+    @Test
+    public void testContainsValue(){
+        HashMap<Integer, String> map = new HashMap<>(5);
+        map.put(2, "a");
+        assertTrue(map.containsValue("a"));
+        assertFalse(map.containsValue("b"));
+        map.put(3, "b");
+        assertTrue(map.containsValue("b"));
+        map.remove(2);
+        assertFalse(map.containsValue("a"));
+        assertTrue(map.containsValue("b"));
+        map.remove(3);
+        assertFalse(map.containsValue("b"));
     }
 }
