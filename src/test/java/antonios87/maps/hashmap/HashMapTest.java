@@ -1,6 +1,8 @@
-package maps.hashmap;
+package antonios87.maps.hashmap;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 

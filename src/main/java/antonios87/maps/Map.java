@@ -1,4 +1,4 @@
-package maps;
+package antonios87.maps;
 
 public interface Map<K, V> {
     void clear();

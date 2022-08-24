@@ -1,7 +1,6 @@
-package maps.hashmap;
+package antonios87.maps.hashmap;
 
-import maps.Map;
-import maps.Node;
+import antonios87.maps.Map;
 
 public class HashMap<K,V> implements Map<K, V> {
     private Node<K,V>[] nodes;

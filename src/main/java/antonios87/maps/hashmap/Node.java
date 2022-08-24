@@ -1,4 +1,4 @@
-package maps;
+package antonios87.maps.hashmap;
 
 public class Node<K,V> {
     final K key;
