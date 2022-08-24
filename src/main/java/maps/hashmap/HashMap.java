@@ -47,7 +47,7 @@ public class HashMap<K,V> implements Map<K, V> {
 
     @Override
     public V get(K key) {
-        int position = key.hashCode() % capacity;
+        int position = getPosition(key);
 
         Node<K, V> node = nodes[position];
         while(node != null && node.getKey() != key){
@@ -64,7 +64,8 @@ public class HashMap<K,V> implements Map<K, V> {
 
     @Override
     public void put(K key, V value) {
-        int position = key.hashCode() % capacity;
+        int position = getPosition(key);
+
         Node<K, V> newNode = new Node<>(key, value, null);
 
         if (nodes[position] == null) {
@@ -110,7 +111,7 @@ public class HashMap<K,V> implements Map<K, V> {
 
     @Override
     public void remove(K key) {
-        int position = key.hashCode() % capacity;
+        int position = getPosition(key);
 
         if (nodes[position] != null) {
             Node<K, V> node = nodes[position];
@@ -137,5 +138,12 @@ public class HashMap<K,V> implements Map<K, V> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public int getPosition(K key){
+        int position = key.hashCode() % capacity;
+        position = position < 0 ? position * -1 : position;
+
+        return position;
     }
 }
